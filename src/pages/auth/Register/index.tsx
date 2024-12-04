@@ -1,5 +1,4 @@
 import React from "react"
-import { useForm, SubmitHandler } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { TextInput } from "components/Form/TextInput"
@@ -11,6 +10,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { AUTH_ACTIONS, useAuth } from "contexts/AuthContext"
 import { loginUser, registerUser } from "services/authServices"
+import { useForm, type SubmitHandler } from "react-hook-form"
 
 const schema = yup.object().shape({
   rsaPin: yup
