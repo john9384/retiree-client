@@ -1,0 +1,16 @@
+export enum Colors {
+  PRIMARY = "#066523",
+  GREEN500 = "#38844F",
+  GREEN700 = "#05511C",
+  SECONDARY = "#081B0E",
+  WHITE = "#FFFFFF",
+  BLACK = "#000000",
+  ERROR_RED = "#D62020",
+  APP_BG = "#FFFFFF",
+  GREY000 = "#f9f9f9",
+  GREY100 = "#f3f3f3",
+  GREY200 = "#cococ1",
+  GREY300 = "#b5b5b5",
+  GREY400 = "#646464",
+  GREY500 = "#3c3c3c",
+}
