@@ -1,3 +1,4 @@
+import { Colors } from "constants/colors"
 import { EyeOff, Eye } from "lucide-react"
 import React, { useState, forwardRef } from "react"
 import styled from "styled-components"
@@ -37,7 +38,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           />
           {isPasswordField && (
             <VisibilityToggle onClick={handleToggleVisibility}>
-              {isPasswordVisible ? <EyeOff /> : <Eye />}
+              {isPasswordVisible ? (
+                <EyeOff color={Colors.GREY300} />
+              ) : (
+                <Eye color={Colors.GREY300} />
+              )}
             </VisibilityToggle>
           )}
         </InputWrapper>
@@ -54,14 +59,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1rem;
   width: 100%;
+  position: relative;
 `
 
 const Label = styled.label`
   font-size: 1.4rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.grey500 || "#333"};
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.grey400};
   font-family: inherit;
 `
 
@@ -72,24 +77,28 @@ const InputWrapper = styled.div`
 const Input = styled.input<{ hasError: boolean }>`
   width: 100%;
   padding: 1rem;
-  padding-right: 3rem; /* Space for the eye icon */
+  padding-right: 3rem;
   height: 5rem;
   border: 1px solid
     ${({ hasError, theme }) =>
-      hasError
-        ? theme.colors.errorRed || "red"
-        : theme.colors.grey300 || "#ccc"};
+      hasError ? theme.colors.errorRed : theme.colors.grey200};
   border-radius: 4px;
   font-size: 1.4rem;
   outline: none;
   transition: border-color 0.3s ease;
   font-family: inherit;
 
+  &::placeholder,
+  &::-webkit-input-placeholder,
+  &:-moz-placeholder,
+  &:-ms-input-placeholder {
+    color: ${({ theme }) => theme.colors.grey100};
+    opacity: 1;
+  }
+
   &:focus {
     border-color: ${({ hasError, theme }) =>
-      hasError
-        ? theme.colors.errorRed || "red"
-        : theme.colors.primary || "#066523"};
+      hasError ? theme.colors.errorRed : theme.colors.primary};
   }
 `
 
@@ -99,18 +108,21 @@ const VisibilityToggle = styled.span`
   right: 1rem;
   transform: translateY(-50%);
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.grey400 || "#888"};
+  color: ${({ theme }) => theme.colors.grey400};
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary || "#066523"};
+    color: ${({ theme }) => theme.colors.primary};
   }
 `
 
 const ErrorText = styled.span`
   font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.errorRed || "red"};
+  color: ${({ theme }) => theme.colors.errorRed};
+  position: absolute;
+  bottom: -1.2rem;
+  left: 0.5rem;
 `

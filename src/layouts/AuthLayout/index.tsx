@@ -12,7 +12,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <Left>
         <BackgroundImage>
           <Logo>Logo</Logo>
-          <img src={RetireeImage} />
+          <img src={RetireeImage} alt="" />
         </BackgroundImage>
       </Left>
       <Right>{children}</Right>
@@ -32,7 +32,7 @@ const Left = styled.div`
 const BackgroundImage = styled.div`
   border-radius: 10px;
   height: 100%;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,8 +41,12 @@ const BackgroundImage = styled.div`
   position: relative;
   img {
     position: absolute;
+    left: 50%;
     bottom: -3rem;
+    transform: translateX(-50%);
     height: 40rem;
+    width: 80%;
+    margin: 0 auto;
     filter: grayscale(100%);
   }
 `

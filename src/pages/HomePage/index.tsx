@@ -9,6 +9,7 @@ const HomePage = () => {
   const { state, dispatch } = useAuth()
   return (
     <React.Fragment>
+      <div id="welcome"></div>
       <Welcome />
       <BusinessFeatures />
       <HowItWorks />

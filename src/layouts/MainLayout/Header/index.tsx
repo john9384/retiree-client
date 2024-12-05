@@ -37,8 +37,12 @@ const Header = () => {
         <Left>
           <Logo>Logo</Logo>
           <NavList>
-            <NavItem>About</NavItem>
-            <NavItem>How it works</NavItem>
+            <NavItem>
+              <a href="#">About</a>
+            </NavItem>
+            <NavItem>
+              <a href="#how_it_works">How it works</a>
+            </NavItem>
           </NavList>
         </Left>
         <Right>

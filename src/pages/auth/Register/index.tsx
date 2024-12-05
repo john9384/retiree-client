@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { TextInput } from "components/Form/TextInput"
 import styled, { ThemeProvider } from "styled-components"
 import { Button } from "components/Button"
-import { H2, SmallText, Text } from "components/Typography"
+import { H2, H3, SmallText, Text } from "components/Typography"
 import { Colors } from "constants/colors"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
@@ -25,7 +25,12 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required("Password is required")
-    .min(6, "Password must be at least 6 characters"),
+    .min(8, "Password must be at least 8 characters")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
+
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password")], "Passwords must match")
@@ -81,16 +86,16 @@ const RegisterPage: React.FC = () => {
   return (
     <Container>
       <div>
-        <BackLink>
+        <BackLink to="/">
           <ChevronLeft size={20} />
           Back to home
         </BackLink>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Header>
-            <H2>Register</H2>
-            <Text color={Colors.GREY300}>
+            <H3>Register</H3>
+            <SmallText color={Colors.GREY400}>
               Enter your details to start your pension.
-            </Text>
+            </SmallText>
           </Header>
           <TextInput
             label="RSA Pin *"
@@ -128,19 +133,19 @@ const RegisterPage: React.FC = () => {
               error={errors.confirmPassword?.message}
             />
           </PasswordRow>
-          <Button btnType="primary" width="full" paddingY={1.5}>
+          <SubmitButton btnType="primary" width="full" paddingY={1.5}>
             Register
-          </Button>
-          <Text>
+          </SubmitButton>
+          <SmallText color={Colors.GREY400}>
             Already have an account or are not a retiree?{" "}
             <LoginLink to="/login">Login here</LoginLink>
-          </Text>
+          </SmallText>
         </Form>
       </div>
 
-      <SmallText textAlign="center">
+      <CopyRight textAlign="center" fontWeight={200}>
         Powered by StellarSync Technology © 2024 v.1.0.0
-      </SmallText>
+      </CopyRight>
     </Container>
   )
 }
@@ -160,7 +165,7 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.6rem;
 `
 
 const Header = styled.div`
@@ -169,14 +174,15 @@ const Header = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
 `
-const BackLink = styled.div`
-  margin-bottom: 3rem;
-  color: ${({ theme }) => theme.colors.grey500};
+const BackLink = styled(Link)`
+  margin-bottom: 2.4rem;
+  color: ${({ theme }) => theme.colors.grey400};
   font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   line-height: 1rem;
+  cursor: pointer;
 `
 const LoginLink = styled(Link)`
   text-decoration: none;
@@ -191,4 +197,16 @@ const PasswordRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2.4rem;
+`
+
+const SubmitButton = styled(Button)`
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+`
+
+const CopyRight = styled(SmallText)`
+  text-align: center;
+  color: ${({ theme }) => theme.colors.grey400};
+  font-size: 1.2rem;
+  font-weight: 200;
 `

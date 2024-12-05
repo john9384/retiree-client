@@ -1,22 +1,23 @@
-import styled from 'styled-components';
+import { Colors } from "constants/colors"
+import { Audio } from "react-loader-spinner"
+import styled from "styled-components"
 
 interface Props {
-  text?: string;
+  text?: string
 }
 
 export const BrokenSpinner: React.FC<Props> = ({ text }) => {
   return (
     <Wrapper>
-      {/*<Image*/}
-      {/*  src={ImageAssets.LOADER_GIF}*/}
-      {/*  objectFit="contain"*/}
-      {/*  height="D300"*/}
-      {/*  width="D300"*/}
-      {/*/>*/}
-      {/*{text && <Text>{text}</Text>}*/}
+      <Audio
+        height="80"
+        width="80"
+        color={Colors.PRIMARY}
+        ariaLabel="loading"
+      />
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,4 +26,4 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`

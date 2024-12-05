@@ -82,4 +82,8 @@ const BtnComponent = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
 `

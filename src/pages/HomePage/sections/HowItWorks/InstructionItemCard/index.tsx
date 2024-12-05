@@ -44,7 +44,11 @@ const ContentBox = styled.div`
   flex-direction: column;
   gap: 1rem;
 `
-const Title = styled(SmallCaption)``
+const Title = styled(SmallText)`
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.grey500};
+`
 const Description = styled(SmallText)`
   color: ${({ theme }) => theme.colors.grey400};
+  font-weight: 400;
 `

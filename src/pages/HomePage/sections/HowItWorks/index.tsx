@@ -13,7 +13,7 @@ export const HowItWorks = () => {
     useState<keyof typeof instructions>("RETIREE")
 
   return (
-    <Section>
+    <Section id="how-it-works">
       <ImgDivLeft>
         <img src={File11} alt="" className="left-img" />
       </ImgDivLeft>
@@ -23,7 +23,11 @@ export const HowItWorks = () => {
             How it
             <span> works</span>
           </Title>
-          <SmallCaption color={Colors.GREY400}>
+          <SmallCaption
+            color={Colors.GREY400}
+            fontWeight={400}
+            textAlign="center"
+          >
             Follow these easy steps to get started
           </SmallCaption>
         </Box>

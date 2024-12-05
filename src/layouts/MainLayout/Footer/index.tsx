@@ -1,5 +1,7 @@
 import { SmallText, Text } from "components/Typography"
 import { Colors } from "constants/colors"
+import { ArrowUp } from "lucide-react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const Footer = () => {
@@ -9,8 +11,8 @@ const Footer = () => {
         <TopDiv>
           <Left>
             <Title>Address</Title>
-            <Text color={Colors.WHITE}>
-              123 Maple Street, Springfield, IL 62704, Lagos Info About How
+            <Text color={Colors.WHITE} fontWeight={200}>
+              123 Maple Street, Springfield, IL 62704, Lagos
             </Text>
           </Left>
           <Right>
@@ -29,13 +31,15 @@ const Footer = () => {
               </Ul>
             </LinkColumn>
             <GoUpColumn>
-              <ArrowFrame>1</ArrowFrame>
+              <ArrowFrame to="#welcome">
+                <ArrowUp color={Colors.GREEN700} />
+              </ArrowFrame>
             </GoUpColumn>
           </Right>
         </TopDiv>
         <Divider />
         <BottomDiv>
-          <SmallText color={Colors.WHITE}>
+          <SmallText color={Colors.WHITE} fontWeight={200}>
             Powered by StellaSync Technollgy 2024
           </SmallText>
           <SmallText color={Colors.WHITE}>v.1.0.0</SmallText>
@@ -46,7 +50,7 @@ const Footer = () => {
 }
 
 const FooterSection = styled.footer`
-  background-color: ${({ theme }) => theme.colors.green500};
+  background-color: ${({ theme }) => theme.colors.primary};
 `
 const Container = styled.div`
   max-width: 110rem;
@@ -62,9 +66,9 @@ const TopDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem 0 3rem 0;
 `
 const Left = styled.div``
-const Description = styled.div``
 const Right = styled.div`
   display: flex;
 `
@@ -86,11 +90,18 @@ const Ul = styled.ul`
   flex-direction: column;
   gap: 1rem;
 `
-const Li = styled.li``
+const Li = styled.li`
+  font-size: 1.4rem;
+  font-weight: 200;
+`
 
-const GoUpColumn = styled(LinkColumn)``
+const GoUpColumn = styled(LinkColumn)`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`
 
-const ArrowFrame = styled.span`
+const ArrowFrame = styled(Link)`
   display: block;
   min-width: 5rem;
   width: 5rem;
@@ -101,9 +112,9 @@ const ArrowFrame = styled.span`
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
-  font-weight: 500;
+  background-color: white;
 `
-const Divider = styled.span`
+const Divider = styled.div`
   display: block;
   width: 100%;
   height: 1px;

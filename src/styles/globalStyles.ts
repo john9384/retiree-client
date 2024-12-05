@@ -5,7 +5,8 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         font-family: "Open Sans", sans-serif;
         font-optical-sizing: auto;
-          max-width: 100%;
+        max-width: 100%;
+        scroll-behavior: smooth;
     }
 
     #webpack-dev-server-client-overlay-div,

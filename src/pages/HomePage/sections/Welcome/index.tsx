@@ -8,7 +8,9 @@ export const Welcome = () => {
   return (
     <Container>
       <Left>
-        <H1>One Platform, Two Solutions</H1>
+        <Title>
+          <div>One Platform,</div> <div>Two Solutions</div>
+        </Title>
         <SubTitle>Simplifying Benefits for Retirees and Employers</SubTitle>
         <Note>
           Whether you're a retiree claiming your benefits or an employer
@@ -37,6 +39,9 @@ const Container = styled.div`
   align-items: center;
   height: calc(100dvh - 60px);
 `
+const Title = styled(H1)`
+  font-size: 5.2rem;
+`
 const Left = styled.div`
   flex: 1;
   display: flex;
@@ -47,7 +52,7 @@ const Left = styled.div`
   max-width: 50rem;
 `
 const Right = styled.div`
-  flex: 1;
+  flex: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +60,7 @@ const Right = styled.div`
 
 const SubTitle = styled(H5)`
   font-weight: 500;
+  color: ${({ theme }) => theme.colors.grey400};
 `
 const Note = styled(Text)`
   font-size: 1.5rem;

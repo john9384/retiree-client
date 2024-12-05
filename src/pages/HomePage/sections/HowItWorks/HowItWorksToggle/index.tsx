@@ -56,4 +56,6 @@ const ToggleButton = styled.button<{ isActive: boolean }>`
   &hover {
     opacity: 0.5;
   }
+  font-size: 1.6rem;
+  font-weight: 500;
 `
