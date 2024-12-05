@@ -28,6 +28,10 @@ const Page = styled.div`
 const Left = styled.div`
   height: 100%;
   width: 40rem;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `
 const BackgroundImage = styled.div`
   border-radius: 10px;
@@ -57,6 +61,9 @@ const Logo = styled.span`
 `
 const Right = styled.div`
   flex: 1;
+  @media (max-width: 800px) {
+    padding: 2rem;
+  }
 `
 
 export default AuthLayout
