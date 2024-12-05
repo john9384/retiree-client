@@ -39,14 +39,12 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
-    console.log("Login Data:", data)
     dispatch({
       type: AUTH_ACTIONS.SET_LOADING,
       payload: true,
     })
     loginUser(data)
       .then((userData) => {
-        console.log("Logged in user:", userData)
         dispatch({
           type: AUTH_ACTIONS.LOGIN,
           payload: userData,

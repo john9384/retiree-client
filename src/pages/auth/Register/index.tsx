@@ -58,14 +58,12 @@ const RegisterPage: React.FC = () => {
 
   const navigate = useNavigate()
   const onSubmit: SubmitHandler<RegisterFormValues> = (data) => {
-    console.log("Registration Data:", data)
     dispatch({
       type: AUTH_ACTIONS.SET_LOADING,
       payload: true,
     })
     registerUser(data)
       .then((userData) => {
-        console.log("Logged in user:", userData)
         dispatch({
           type: AUTH_ACTIONS.SET_LOADING,
           payload: true,
@@ -73,7 +71,7 @@ const RegisterPage: React.FC = () => {
         navigate("/login")
       })
       .catch((error) => {
-        console.error("Login failed:", error)
+        console.error("Registeration failed:", error)
         dispatch({
           type: AUTH_ACTIONS.SET_LOADING,
           payload: false,
