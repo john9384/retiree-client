@@ -10,7 +10,7 @@ import { ChevronLeft } from "lucide-react"
 import { Button } from "components/Button"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { loginUser } from "services/authServices"
-import { BlankPageLoader } from "components/Loaders"
+import { OverlayLoader } from "components/Loaders"
 import { AUTH_ACTIONS, useAuth } from "contexts/AuthContext"
 
 const schema = yup.object().shape({
@@ -106,7 +106,7 @@ const LoginPage: React.FC = () => {
       <CopyRight textAlign="center" fontWeight={200}>
         Powered by StellarSync Technology © 2024 v.1.0.0
       </CopyRight>
-      {state.isLoading && <BlankPageLoader />}
+      {state.isLoading && <OverlayLoader />}
     </Container>
   )
 }

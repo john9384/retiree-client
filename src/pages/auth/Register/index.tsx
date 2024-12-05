@@ -2,15 +2,16 @@ import React from "react"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { TextInput } from "components/Form/TextInput"
-import styled, { ThemeProvider } from "styled-components"
+import styled from "styled-components"
 import { Button } from "components/Button"
-import { H2, H3, SmallText, Text } from "components/Typography"
+import { H3, SmallText, Text } from "components/Typography"
 import { Colors } from "constants/colors"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { AUTH_ACTIONS, useAuth } from "contexts/AuthContext"
-import { loginUser, registerUser } from "services/authServices"
+import { registerUser } from "services/authServices"
 import { useForm, type SubmitHandler } from "react-hook-form"
+import { OverlayLoader } from "components/Loaders"
 
 const schema = yup.object().shape({
   rsaPin: yup
@@ -66,7 +67,7 @@ const RegisterPage: React.FC = () => {
       .then((userData) => {
         dispatch({
           type: AUTH_ACTIONS.SET_LOADING,
-          payload: true,
+          payload: false,
         })
         navigate("/login")
       })
@@ -144,6 +145,7 @@ const RegisterPage: React.FC = () => {
       <CopyRight textAlign="center" fontWeight={200}>
         Powered by StellarSync Technology © 2024 v.1.0.0
       </CopyRight>
+      {state.isLoading && <OverlayLoader />}
     </Container>
   )
 }
